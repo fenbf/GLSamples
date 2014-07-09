@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PersistentMappedBuffer", "PersistentMappedBuffer\PersistentMappedBuffer.vcxproj", "{E444B091-4E6E-48BB-8F93-9393B2E8C932}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArrayTexture", "ArrayTexture\ArrayTexture.vcxproj", "{E96A865D-50CA-4A76-8F63-AE72622398CC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MultidrawIndirect", "MultidrawIndirect\MultidrawIndirect.vcxproj", "{CD85C252-F7F5-4057-888E-665FCD2BEBA5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E444B091-4E6E-48BB-8F93-9393B2E8C932}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E444B091-4E6E-48BB-8F93-9393B2E8C932}.Debug|Win32.Build.0 = Debug|Win32
+		{E444B091-4E6E-48BB-8F93-9393B2E8C932}.Release|Win32.ActiveCfg = Release|Win32
+		{E444B091-4E6E-48BB-8F93-9393B2E8C932}.Release|Win32.Build.0 = Release|Win32
+		{E96A865D-50CA-4A76-8F63-AE72622398CC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E96A865D-50CA-4A76-8F63-AE72622398CC}.Debug|Win32.Build.0 = Debug|Win32
+		{E96A865D-50CA-4A76-8F63-AE72622398CC}.Release|Win32.ActiveCfg = Release|Win32
+		{E96A865D-50CA-4A76-8F63-AE72622398CC}.Release|Win32.Build.0 = Release|Win32
+		{CD85C252-F7F5-4057-888E-665FCD2BEBA5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CD85C252-F7F5-4057-888E-665FCD2BEBA5}.Debug|Win32.Build.0 = Debug|Win32
+		{CD85C252-F7F5-4057-888E-665FCD2BEBA5}.Release|Win32.ActiveCfg = Release|Win32
+		{CD85C252-F7F5-4057-888E-665FCD2BEBA5}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
