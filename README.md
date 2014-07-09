@@ -1,4 +1,0 @@
-AZDO-Samples
-============
-
-AZDO samples
