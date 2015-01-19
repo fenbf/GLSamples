@@ -6,12 +6,21 @@
 
 namespace
 {
+	bool gUseNBuffering = false;
+	size_t gBufferCount = 3;
+
   struct SVertex2D
   {
     float x;
     float y;
   };
   
+  struct Range
+  {
+	  size_t begin = 0;
+	  GLsync sync = 0;
+  };
+
   const GLchar* gVertexShaderSource[] = {
                          "#version 440 core\n"
                          "layout (location = 0 ) in vec2 position;\n"
@@ -37,8 +46,11 @@ namespace
   GLuint gVertexBuffer(0);  
   SVertex2D* gVertexBufferData(0);
   GLuint gProgram(0);
+  Range gSyncRanges[3];	// max buffer count is 3...
+  GLuint gRangeIndex = 0;
   GLsync gSync;
-         
+  GLuint gWaitCount = 0;
+  GLuint gFrameCount = 0;
 }//Unnamed namespace
 
 
@@ -84,7 +96,8 @@ void Init(void)
   glewInit(); 
     
   //Set clear color
-  glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+  glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
+  glDisable(GL_TEXTURE_2D);
   
   //Create and bind the shader program
   gProgram = CompileShaders( gVertexShaderSource, gFragmentShaderSource );
@@ -97,33 +110,42 @@ void Init(void)
   glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0 );
   
   //Create an immutable data store for the buffer
-  size_t bufferSize( sizeof(gTrianglePosition) );  
+  size_t bufferSize( sizeof(gTrianglePosition) ) ;  
+  if (gUseNBuffering)
+  {
+	  bufferSize *= gBufferCount;
+	  gSyncRanges[0].begin = 0;
+	  gSyncRanges[1].begin = 3;
+	  gSyncRanges[2].begin = 6;
+  }
+
   GLbitfield flags = GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT;
   glBufferStorage( GL_ARRAY_BUFFER, bufferSize, 0, flags );
   
-  //Map the buffer for ever
+  //Map the buffer forever
   gVertexBufferData = (SVertex2D*)glMapBufferRange( GL_ARRAY_BUFFER, 0, bufferSize, flags ); 
 
 }
 
-void LockBuffer()
+void LockBuffer(GLsync& syncObj)
 {
-  if( gSync )
+  if( syncObj )
   {
-    glDeleteSync( gSync );	
+	  glDeleteSync(syncObj);
   }
-  gSync = glFenceSync( GL_SYNC_GPU_COMMANDS_COMPLETE, 0 );
+  syncObj = glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
 }
 
-void WaitBuffer()
+void WaitBuffer(GLsync& syncObj)
 {
-  if( gSync )
+  if (syncObj)
   {
     while( 1 )	
 	{
-	  GLenum waitReturn = glClientWaitSync( gSync, GL_SYNC_FLUSH_COMMANDS_BIT, 1 );
-	  if (waitReturn == GL_ALREADY_SIGNALED || waitReturn == GL_CONDITION_SATISFIED)
-	    return;
+		GLenum waitReturn = glClientWaitSync(syncObj, GL_SYNC_FLUSH_COMMANDS_BIT, 1);
+		if (waitReturn == GL_ALREADY_SIGNALED || waitReturn == GL_CONDITION_SATISFIED)
+			return;
+		gWaitCount++;
     }
   }
 }
@@ -132,25 +154,47 @@ void WaitBuffer()
 void Display()
 {
   glClear( GL_COLOR_BUFFER_BIT );
-  gAngle += 0.1f;
+  gAngle += 0.001f;
   
   //Wait until the gpu is no longer using the buffer
-  WaitBuffer();
+  if (gUseNBuffering)
+	  WaitBuffer(gSyncRanges[gRangeIndex].sync);
+  else
+	  WaitBuffer(gSync);
   
   //Modify vertex buffer data using the persistent mapped address
-  for( size_t i(0); i!=6; ++i )
+
+  size_t startID = 0;
+
+  if (gUseNBuffering)
+	  startID = gSyncRanges[gRangeIndex].begin;
+
+  const int MAX_ITERS = 1;
+  for (int iter = 0; iter < MAX_ITERS; ++iter)
   {
-    gVertexBufferData[i].x = gTrianglePosition[i].x * cosf( gAngle ) - gTrianglePosition[i].y * sinf( gAngle );
-    gVertexBufferData[i].y = gTrianglePosition[i].x * sinf( gAngle ) + gTrianglePosition[i].y * cosf( gAngle );    
-  }  
+	  for (size_t i(0); i != 3; ++i)
+	  {
+		  gVertexBufferData[i + startID].x = gTrianglePosition[i].x * cosf(gAngle) - gTrianglePosition[i].y * sinf(gAngle);
+		  gVertexBufferData[i + startID].y = gTrianglePosition[i].x * sinf(gAngle) + gTrianglePosition[i].y * cosf(gAngle);
+	  }
+  }
 
   //Draw using the vertex buffer
-  glDrawArrays( GL_TRIANGLES, 0, 3 );
+  for (int iter = 0; iter < MAX_ITERS; ++iter)
+	  glDrawArrays(GL_TRIANGLES, startID, 3);
   
   //Place a fence wich will be removed when the draw command has finished
-  LockBuffer();
+  if (gUseNBuffering)
+	  LockBuffer(gSyncRanges[gRangeIndex].sync);
+  else
+	  LockBuffer(gSync);
+
+  gRangeIndex = (gRangeIndex + 1) % gBufferCount;
 
   glutSwapBuffers();
+  gFrameCount++;
+
+
 }
 
 void Quit()
@@ -161,6 +205,8 @@ void Quit()
   glUnmapBuffer( GL_ARRAY_BUFFER );
   glDeleteBuffers( 1, &gVertexBuffer );
   
+  std::cout << "wait counter: " << gWaitCount << ", frame counter: " << gFrameCount << std::endl;
+
   //Exit application
   exit(0);
 }
@@ -182,6 +228,23 @@ int main( int argc, char** argv )
   glutIdleFunc(Display);
   glutKeyboardFunc( OnKeyPress );
   
+  gUseNBuffering = false;
+  if (argc > 1)
+  {
+	  if (strcmp(argv[1], "triple") == 0)
+	  {
+		  gUseNBuffering = true;
+		  gBufferCount = 3;
+		  std::cout << "using triple buffering..." << std::endl;
+	  }
+	  else if (strcmp(argv[1], "double") == 0)
+	  {
+		  gUseNBuffering = true;
+		  gBufferCount = 2;
+		  std::cout << "using double buffering..." << std::endl;
+	  }
+  }
+
   Init();
   
   //Enter the GLUT event loop
