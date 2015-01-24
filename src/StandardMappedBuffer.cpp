@@ -12,8 +12,7 @@ namespace
 {
 	const size_t MAX_BUFFER_COUNT = 3;
 	
-	bool gParamSyncBuffers   = true;
-	size_t gParamBufferCount = 1;
+	bool gParamUseMapBuffer = false;
 	int gParamMaxAllowedTime = 0;
 	bool gParamDebugMode = false;
 	size_t gParamTriangleCount = 100;
@@ -22,12 +21,6 @@ namespace
 	{
 		float x;
 		float y;
-	};
-
-	struct Range
-	{
-		size_t begin = 0;
-		GLsync sync = 0;
 	};
 
 	const GLchar* gVertexShaderSource[] = {
@@ -53,12 +46,8 @@ namespace
 	GLfloat gAngle = 0.0f;
 
 	GLuint gVertexBuffer(0);
-	SVertex2D* gVertexBufferData(nullptr);
+	SVertex2D* gVertexBufferData = nullptr;
 	GLuint gProgram(0);
-	Range gSyncRanges[MAX_BUFFER_COUNT];
-	GLuint gRangeIndex = 0;
-	GLsync gSyncObject;
-	GLuint gWaitCount = 0;
 	GLuint gFrameCount = 0;
 }//Unnamed namespace
 
@@ -143,12 +132,6 @@ void Init(void)
 	//Init glew
 	glewInit();
 
-	if (!glewIsSupported("GL_ARB_buffer_storage"))
-	{
-		std::cerr << "ERROR: \"ARB_buffer_storage\" is missing..." << std::endl;
-		exit(-1);
-	}
-
 #ifdef WIN32	// make sure vsync is turned off
 	if (WGLEW_EXT_swap_control)
 		wglSwapIntervalEXT(0);
@@ -180,20 +163,12 @@ void Init(void)
 	PrepareReferenceTriangles(gReferenceTrianglePosition.get(), gParamTriangleCount);
 
 	//Create an immutable data store for the buffer
-	size_t bufferSize{ gParamTriangleCount * 3 * sizeof(SVertex2D)};
-	if (gParamBufferCount > 1)
-	{
-		bufferSize *= gParamBufferCount;
-		gSyncRanges[0].begin = 0;
-		gSyncRanges[1].begin = gParamTriangleCount * 3;
-		gSyncRanges[2].begin = gParamTriangleCount * 3 * 2;
-	}
+	const size_t bufferSize{ gParamTriangleCount * 3 * sizeof(SVertex2D)};
 
-	GLbitfield flags = GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT;
-	glBufferStorage(GL_ARRAY_BUFFER, bufferSize, 0, flags);
+	glBufferData(GL_ARRAY_BUFFER, bufferSize, nullptr, GL_STREAM_DRAW);
 
-	//Map the buffer forever
-	gVertexBufferData = (SVertex2D*)glMapBufferRange(GL_ARRAY_BUFFER, 0, bufferSize, flags);
+	if (!gParamUseMapBuffer)
+		gVertexBufferData = new SVertex2D[gParamTriangleCount * 3]; 
 }
 
 void Quit()
@@ -201,36 +176,12 @@ void Quit()
 	//Clean-up
 	glUseProgram(0);
 	glDeleteProgram(gProgram);
-	glUnmapBuffer(GL_ARRAY_BUFFER);
 	glDeleteBuffers(1, &gVertexBuffer);
 
-	std::cout << "Wait counter: " << gWaitCount << ". Frame counter: " << gFrameCount << std::endl;
+	std::cout << "Frame counter: " << gFrameCount << std::endl;
 
 	//Exit application
 	exit(0);
-}
-
-void LockBuffer(GLsync& syncObj)
-{
-	if (syncObj)
-		glDeleteSync(syncObj);
-
-	syncObj = glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
-}
-
-void WaitBuffer(GLsync& syncObj)
-{
-	if (syncObj)
-	{
-		while (1)
-		{
-			GLenum waitReturn = glClientWaitSync(syncObj, GL_SYNC_FLUSH_COMMANDS_BIT, 1);
-			if (waitReturn == GL_ALREADY_SIGNALED || waitReturn == GL_CONDITION_SATISFIED)
-				return;
-
-			gWaitCount++;
-		}
-	}
 }
 
 void Display()
@@ -238,21 +189,10 @@ void Display()
 	glClear(GL_COLOR_BUFFER_BIT);
 	gAngle += 0.001f;
 
-	//Wait until the gpu is no longer using the buffer
-	if (gParamSyncBuffers)
-	{
-		if (gParamBufferCount > 1)
-			WaitBuffer(gSyncRanges[gRangeIndex].sync);
-		else
-			WaitBuffer(gSyncObject);
-	}
+	const size_t bufferSize{ gParamTriangleCount * 3 * sizeof(SVertex2D) };
 
-	//Modify vertex buffer data using the persistent mapped address
-
-	size_t startID = 0;
-
-	if (gParamBufferCount > 1)
-		startID = gSyncRanges[gRangeIndex].begin;
+	if (gParamUseMapBuffer)
+		gVertexBufferData = (SVertex2D*)glMapBufferRange(GL_ARRAY_BUFFER, 0, bufferSize, GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT);
 
 	const int MAX_ITERS = 1;
 	float tx, ty, an;
@@ -263,25 +203,22 @@ void Display()
 			tx = gReferenceTrianglePosition[(i / 3) * 3].x + 0.01f;
 			ty = gReferenceTrianglePosition[(i / 3) * 3].y + 0.01f;
 			an = gAngle*sinf(tx*3.0f) + ty;
-			gVertexBufferData[i + startID].x = (gReferenceTrianglePosition[i].x - tx) * cosf(an) - (gReferenceTrianglePosition[i].y - ty) * sinf(an) + tx;
-			gVertexBufferData[i + startID].y = (gReferenceTrianglePosition[i].x - tx) * sinf(an) + (gReferenceTrianglePosition[i].y - ty) * cosf(an) + ty;
+			gVertexBufferData[i].x = (gReferenceTrianglePosition[i].x - tx) * cosf(an) - (gReferenceTrianglePosition[i].y - ty) * sinf(an) + tx;
+			gVertexBufferData[i].y = (gReferenceTrianglePosition[i].x - tx) * sinf(an) + (gReferenceTrianglePosition[i].y - ty) * cosf(an) + ty;
 		}
+	}
+	
+	if (gParamUseMapBuffer)
+		glUnmapBuffer(GL_ARRAY_BUFFER);
+	else
+	{
+		glBufferData(GL_ARRAY_BUFFER, bufferSize, nullptr, GL_DYNAMIC_DRAW);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, bufferSize, gVertexBufferData);
 	}
 
 	//Draw using the vertex buffer
 	for (int iter = 0; iter < MAX_ITERS; ++iter)
-		glDrawArrays(GL_TRIANGLES, startID, gParamTriangleCount * 3);
-
-	//Place a fence which will be removed when the draw command has finished
-	if (gParamSyncBuffers)
-	{
-		if (gParamBufferCount > 1)
-			LockBuffer(gSyncRanges[gRangeIndex].sync);
-		else
-			LockBuffer(gSyncObject);
-	}
-
-	gRangeIndex = (gRangeIndex + 1) % gParamBufferCount;
+		glDrawArrays(GL_TRIANGLES, 0, gParamTriangleCount * 3);
 
 	glutSwapBuffers();
 	gFrameCount++;
@@ -313,15 +250,9 @@ int main(int argc, char** argv)
 
 	if (argc > 1)
 	{
-		gParamSyncBuffers = strstr(searchArgv(argc, argv, "sync=", ""), "true") != nullptr;
-		gParamDebugMode = strstr(searchArgv(argc, argv, "debug=", ""), "true") != nullptr;
+		gParamUseMapBuffer = strstr(searchArgv(argc, argv, "usemap=", ""), "true") != nullptr;
 
-		if (searchArgv(argc, argv, "single", nullptr))
-			gParamBufferCount = 1;
-		else if (searchArgv(argc, argv, "double", nullptr))
-			gParamBufferCount = 2;
-		else if (searchArgv(argc, argv, "triple", nullptr))
-			gParamBufferCount = 3;
+		gParamDebugMode = strstr(searchArgv(argc, argv, "debug=", ""), "false") != nullptr;
 
 		const char *strTimeAllowed = searchArgv(argc, argv, "time=", "0");
 		gParamMaxAllowedTime = 1000 * atoi(strTimeAllowed);
@@ -330,10 +261,9 @@ int main(int argc, char** argv)
 		gParamTriangleCount = atoi(strTris);
 	}
 
-	std::cout << "GLSamples: Persistent Mapped Buffers" << std::endl;
+	std::cout << "GLSamples: Standard Mapped Buffers" << std::endl;
+	std::cout << (gParamUseMapBuffer ? "Using glMap*" : "Using glBuffer*Data") << std::endl;
 	std::cout << "Triangles:    " << gParamTriangleCount << std::endl;
-	std::cout << "Sync:         " << (gParamSyncBuffers ? "on" : "off") << std::endl;
-	std::cout << "Buffer count: " << (gParamBufferCount == 1 ? "single" : gParamBufferCount == 2 ? "double" : "triple") << std::endl;
 	if (gParamMaxAllowedTime > 0)
 		std::cout << "Quit after:   " << gParamMaxAllowedTime / 1000 << " sec" << std::endl;
 
