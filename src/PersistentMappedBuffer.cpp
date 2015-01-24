@@ -2,6 +2,7 @@
 #include <math.h>
 #include <cstdlib>
 #include <ctime>
+#include <memory>
 
 #include "GL/glew.h"
 #include "gl/wglew.h"
@@ -15,6 +16,7 @@ namespace
 	bool gParamBenchmarkMode = false;
 	int gParamMaxAllowedTime = 0;
 	bool gParamDebugMode = false;
+	size_t gParamTriangleCount = 100;
 
 	struct SVertex2D
 	{
@@ -47,9 +49,7 @@ namespace
 		"}\n"
 	};
 
-
-	const size_t NUM_TRIANGLES = 10000;
-	SVertex2D gReferenceTrianglePosition[NUM_TRIANGLES * 3];
+	std::unique_ptr<SVertex2D[]> gReferenceTrianglePosition = nullptr;
 	GLfloat gAngle = 0.0f;
 
 	GLuint gVertexBuffer(0);
@@ -95,7 +95,7 @@ void PrepareReferenceTriangles(SVertex2D *trianglePos, size_t triangleCount)
 	{
 		float px = ((float)rand() / (float)RAND_MAX)*1.9f - 0.95f;
 		float py = ((float)rand() / (float)RAND_MAX)*1.9f - 0.95f;
-		float pd = ((float)rand() / (float)RAND_MAX)*0.02f + 0.01f;
+		float pd = 0.02f;// ((float)rand() / (float)RAND_MAX)*0.02f + 0.01f;
 
 		trianglePos[i * 3 + 0] = { px, py + pd };
 		trianglePos[i * 3 + 1] = { px - pd, py - pd };
@@ -127,7 +127,7 @@ void APIENTRY DebugFunc(GLenum source, GLenum type, GLuint id, GLenum severity, 
 	case GL_DEBUG_TYPE_OTHER: errorType = "Other"; break;
 	}
 
-	std::string typeSeverity;
+	std::string typeSeverity("default");
 	switch (severity)
 	{
 	case GL_DEBUG_SEVERITY_HIGH: typeSeverity = "High"; break;
@@ -135,7 +135,7 @@ void APIENTRY DebugFunc(GLenum source, GLenum type, GLuint id, GLenum severity, 
 	case GL_DEBUG_SEVERITY_LOW: typeSeverity = "Low"; break;
 	}
 
-	printf("\nGL Debug Message \"%s\" from \"%s\",\t%s priority\nMessage: %s\n", errorType.c_str(), srcName.c_str(), typeSeverity.c_str(), message);
+	printf("\nGL Debug Message \"%s\" from \"%s\",\t%s priority \nMessage: %s\n", errorType.c_str(), srcName.c_str(), typeSeverity.c_str(), message);
 }
 
 void Init(void)
@@ -176,16 +176,17 @@ void Init(void)
 	glBindBuffer(GL_ARRAY_BUFFER, gVertexBuffer);
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
-	PrepareReferenceTriangles(gReferenceTrianglePosition, NUM_TRIANGLES);
+	gReferenceTrianglePosition.reset(new SVertex2D[gParamTriangleCount * 3]);
+	PrepareReferenceTriangles(gReferenceTrianglePosition.get(), gParamTriangleCount);
 
 	//Create an immutable data store for the buffer
-	size_t bufferSize(sizeof(gReferenceTrianglePosition));
+	size_t bufferSize{ gParamTriangleCount * 3 * sizeof(SVertex2D)};
 	if (gParamBufferCount > 1)
 	{
 		bufferSize *= gParamBufferCount;
 		gSyncRanges[0].begin = 0;
-		gSyncRanges[1].begin = NUM_TRIANGLES * 3;
-		gSyncRanges[2].begin = NUM_TRIANGLES * 3 * 2;
+		gSyncRanges[1].begin = gParamTriangleCount * 3;
+		gSyncRanges[2].begin = gParamTriangleCount * 3 * 2;
 	}
 
 	GLbitfield flags = GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT;
@@ -254,21 +255,22 @@ void Display()
 		startID = gSyncRanges[gRangeIndex].begin;
 
 	const int MAX_ITERS = 1;
-	float tx, ty;
+	float tx, ty, an;
 	for (int iter = 0; iter < MAX_ITERS; ++iter)
 	{
-		for (size_t i(0); i != NUM_TRIANGLES * 3; ++i)
+		for (size_t i(0); i != gParamTriangleCount * 3; ++i)
 		{
 			tx = gReferenceTrianglePosition[(i / 3) * 3].x + 0.01f;
 			ty = gReferenceTrianglePosition[(i / 3) * 3].y + 0.01f;
-			gVertexBufferData[i + startID].x = (gReferenceTrianglePosition[i].x - tx) * cosf(gAngle) - (gReferenceTrianglePosition[i].y - ty) * sinf(gAngle) + tx;
-			gVertexBufferData[i + startID].y = (gReferenceTrianglePosition[i].x - tx) * sinf(gAngle) + (gReferenceTrianglePosition[i].y - ty) * cosf(gAngle) + ty;
+			an = gAngle*sinf(tx*3.0f) + ty;
+			gVertexBufferData[i + startID].x = (gReferenceTrianglePosition[i].x - tx) * cosf(an) - (gReferenceTrianglePosition[i].y - ty) * sinf(an) + tx;
+			gVertexBufferData[i + startID].y = (gReferenceTrianglePosition[i].x - tx) * sinf(an) + (gReferenceTrianglePosition[i].y - ty) * cosf(an) + ty;
 		}
 	}
 
 	//Draw using the vertex buffer
 	for (int iter = 0; iter < MAX_ITERS; ++iter)
-		glDrawArrays(GL_TRIANGLES, startID, NUM_TRIANGLES * 3);
+		glDrawArrays(GL_TRIANGLES, startID, gParamTriangleCount * 3);
 
 	//Place a fence which will be removed when the draw command has finished
 	if (gParamSyncBuffers)
@@ -320,9 +322,13 @@ int main(int argc, char** argv)
 
 		const char *strTimeAllowed = searchArgv(argc, argv, "time=", "0");
 		gParamMaxAllowedTime = 1000 * atoi(strTimeAllowed);
+
+		const char *strTris = searchArgv(argc, argv, "tris=", "100");
+		gParamTriangleCount = atoi(strTris);
 	}
 
 	std::cout << "GLSamples: Persistent Mapped Buffers" << std::endl;
+	std::cout << "Triangles:    " << gParamTriangleCount << std::endl;
 	std::cout << "Sync:         " << (gParamSyncBuffers ? "on" : "off") << std::endl;
 	std::cout << "Buffer count: " << (gParamBufferCount == 1 ? "single" : gParamBufferCount == 2 ? "double" : "triple") << std::endl;
 	if (gParamMaxAllowedTime > 0)
