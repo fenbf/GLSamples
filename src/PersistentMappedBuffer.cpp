@@ -17,6 +17,7 @@ namespace
 	int gParamMaxAllowedTime = 0;
 	bool gParamDebugMode = false;
 	size_t gParamTriangleCount = 100;
+	bool gParamShowOnlyResults = false;
 
 	struct SVertex2D
 	{
@@ -204,7 +205,9 @@ void Quit()
 	glUnmapBuffer(GL_ARRAY_BUFFER);
 	glDeleteBuffers(1, &gVertexBuffer);
 
-	std::cout << "Wait counter: " << gWaitCount << ". Frame counter: " << gFrameCount << std::endl;
+	double perFrame = 1000.0/((double)gFrameCount / 5.0);
+
+	std::cout << "Wait counter: " << gWaitCount << " Frame counter: " << gFrameCount << " Per frame: " << perFrame << " milisec " << std::endl;
 
 	//Exit application
 	exit(0);
@@ -267,6 +270,7 @@ void Display()
 			gVertexBufferData[i + startID].y = (gReferenceTrianglePosition[i].x - tx) * sinf(an) + (gReferenceTrianglePosition[i].y - ty) * cosf(an) + ty;
 		}
 	}
+	//glMemoryBarrier(GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT);
 
 	//Draw using the vertex buffer
 	for (int iter = 0; iter < MAX_ITERS; ++iter)
@@ -315,6 +319,7 @@ int main(int argc, char** argv)
 	{
 		gParamSyncBuffers = strstr(searchArgv(argc, argv, "sync=", ""), "true") != nullptr;
 		gParamDebugMode = strstr(searchArgv(argc, argv, "debug=", ""), "true") != nullptr;
+		gParamShowOnlyResults = strstr(searchArgv(argc, argv, "resonly=", ""), "true") != nullptr;
 
 		if (searchArgv(argc, argv, "single", nullptr))
 			gParamBufferCount = 1;
@@ -330,12 +335,15 @@ int main(int argc, char** argv)
 		gParamTriangleCount = atoi(strTris);
 	}
 
-	std::cout << "GLSamples: Persistent Mapped Buffers" << std::endl;
-	std::cout << "Triangles:    " << gParamTriangleCount << std::endl;
-	std::cout << "Sync:         " << (gParamSyncBuffers ? "on" : "off") << std::endl;
-	std::cout << "Buffer count: " << (gParamBufferCount == 1 ? "single" : gParamBufferCount == 2 ? "double" : "triple") << std::endl;
-	if (gParamMaxAllowedTime > 0)
-		std::cout << "Quit after:   " << gParamMaxAllowedTime / 1000 << " sec" << std::endl;
+	if (!gParamShowOnlyResults)
+	{
+		std::cout << "GLSamples: Persistent Mapped Buffers" << std::endl;
+		std::cout << "Triangles:    " << gParamTriangleCount << std::endl;
+		std::cout << "Sync:         " << (gParamSyncBuffers ? "on" : "off") << std::endl;
+		std::cout << "Buffer count: " << (gParamBufferCount == 1 ? "single" : gParamBufferCount == 2 ? "double" : "triple") << std::endl;
+		if (gParamMaxAllowedTime > 0)
+			std::cout << "Quit after:   " << gParamMaxAllowedTime / 1000 << " sec" << std::endl;
+	}
 
 	//glutInitContextVersion(4, 2);
 	glutInitContextFlags(GLUT_FORWARD_COMPATIBLE | GLUT_DEBUG);

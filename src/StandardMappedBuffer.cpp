@@ -14,8 +14,10 @@ namespace
 	
 	bool gParamUseMapBuffer = false;
 	int gParamMaxAllowedTime = 0;
+	bool gParamOrphan = true;
 	bool gParamDebugMode = false;
 	size_t gParamTriangleCount = 100;
+	bool gParamShowOnlyResults = false;
 
 	struct SVertex2D
 	{
@@ -178,7 +180,9 @@ void Quit()
 	glDeleteProgram(gProgram);
 	glDeleteBuffers(1, &gVertexBuffer);
 
-	std::cout << "Frame counter: " << gFrameCount << std::endl;
+	double perFrame = 1000.0 / ((double)gFrameCount / 5.0);
+
+	std::cout << "Frame counter: " << gFrameCount << " Per frame: " << perFrame << " milisec " << std::endl;
 
 	//Exit application
 	exit(0);
@@ -192,7 +196,12 @@ void Display()
 	const size_t bufferSize{ gParamTriangleCount * 3 * sizeof(SVertex2D) };
 
 	if (gParamUseMapBuffer)
-		gVertexBufferData = (SVertex2D*)glMapBufferRange(GL_ARRAY_BUFFER, 0, bufferSize, GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT);
+	{
+		if (gParamOrphan)
+			gVertexBufferData = (SVertex2D*)glMapBufferRange(GL_ARRAY_BUFFER, 0, bufferSize, GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT);
+		else
+			gVertexBufferData = (SVertex2D*)glMapBufferRange(GL_ARRAY_BUFFER, 0, bufferSize, GL_MAP_WRITE_BIT);
+	}
 
 	const int MAX_ITERS = 1;
 	float tx, ty, an;
@@ -212,8 +221,15 @@ void Display()
 		glUnmapBuffer(GL_ARRAY_BUFFER);
 	else
 	{
-		glBufferData(GL_ARRAY_BUFFER, bufferSize, nullptr, GL_DYNAMIC_DRAW);
-		glBufferSubData(GL_ARRAY_BUFFER, 0, bufferSize, gVertexBufferData);
+		if (gParamOrphan)
+		{
+			glBufferData(GL_ARRAY_BUFFER, bufferSize, nullptr, GL_DYNAMIC_DRAW);
+			glBufferSubData(GL_ARRAY_BUFFER, 0, bufferSize, gVertexBufferData);
+		}
+		else
+		{
+			glBufferSubData(GL_ARRAY_BUFFER, 0, bufferSize, gVertexBufferData);
+		}
 	}
 
 	//Draw using the vertex buffer
@@ -251,6 +267,8 @@ int main(int argc, char** argv)
 	if (argc > 1)
 	{
 		gParamUseMapBuffer = strstr(searchArgv(argc, argv, "usemap=", ""), "true") != nullptr;
+		gParamOrphan = strstr(searchArgv(argc, argv, "orphan=", ""), "true") != nullptr;
+		gParamShowOnlyResults = strstr(searchArgv(argc, argv, "resonly=", ""), "true") != nullptr;
 
 		gParamDebugMode = strstr(searchArgv(argc, argv, "debug=", ""), "false") != nullptr;
 
@@ -261,11 +279,15 @@ int main(int argc, char** argv)
 		gParamTriangleCount = atoi(strTris);
 	}
 
-	std::cout << "GLSamples: Standard Mapped Buffers" << std::endl;
-	std::cout << (gParamUseMapBuffer ? "Using glMap*" : "Using glBuffer*Data") << std::endl;
-	std::cout << "Triangles:    " << gParamTriangleCount << std::endl;
-	if (gParamMaxAllowedTime > 0)
-		std::cout << "Quit after:   " << gParamMaxAllowedTime / 1000 << " sec" << std::endl;
+	if (!gParamShowOnlyResults)
+	{
+		std::cout << "GLSamples: Standard Mapped Buffers" << std::endl;
+		std::cout << (gParamUseMapBuffer ? "Using glMap*" : "Using glBuffer*Data") << std::endl;
+		std::cout << (gParamOrphan ? "Orphaning" : "No orphaning") << std::endl;
+		std::cout << "Triangles:    " << gParamTriangleCount << std::endl;
+		if (gParamMaxAllowedTime > 0)
+			std::cout << "Quit after:   " << gParamMaxAllowedTime / 1000 << " sec" << std::endl;
+	}
 
 	//glutInitContextVersion(4, 2);
 	glutInitContextFlags(GLUT_FORWARD_COMPATIBLE | GLUT_DEBUG);
