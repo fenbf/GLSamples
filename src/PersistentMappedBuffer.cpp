@@ -32,7 +32,7 @@ namespace
 	};
 
 	const GLchar* gVertexShaderSource[] = {
-		"#version 440 core\n"
+		"#version 420 core\n"
 		"layout (location = 0 ) in vec2 position;\n"
 		"void main(void)\n"
 		"{\n"
@@ -41,7 +41,7 @@ namespace
 	};
 
 	const GLchar* gFragmentShaderSource[] = {
-		"#version 440 core\n"
+		"#version 420 core\n"
 		"out vec3 color;\n"
 		"void main(void)\n"
 		"{\n"
@@ -61,19 +61,49 @@ namespace
 	GLsync gSyncObject;
 	GLuint gWaitCount = 0;
 	GLuint gFrameCount = 0;
+	GLuint gDefaultVao = 0;
 }//Unnamed namespace
+
+void logShaderInfo(GLuint shaderID)
+{
+	int infologLength = 0;
+	glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &infologLength);
+
+	if (infologLength > 0)
+	{
+		int charsWritten = 0;
+		char *infoLog;
+		infoLog = (char *)malloc(infologLength);
+		glGetShaderInfoLog(shaderID, infologLength, &charsWritten, infoLog);
+
+		printf(infoLog);
+
+		free(infoLog);
+	}
+}
+
+GLuint CompileShader(const GLchar** shaderSource, GLenum type)
+{
+	GLuint shader(glCreateShader(type));
+	glShaderSource(shader, 1, shaderSource, NULL);
+	glCompileShader(shader);
+
+	int compileStatus = GL_TRUE;
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &compileStatus);
+
+	if (compileStatus == GL_FALSE)
+	{
+		//printf("Compilation for vertex shader shader failed!");
+		logShaderInfo(shader);
+		return 0;
+	}
+	return shader;
+}
 
 GLuint CompileShaders(const GLchar** vertexShaderSource, const GLchar** fragmentShaderSource)
 {
-	//Compile vertex shader
-	GLuint vertexShader(glCreateShader(GL_VERTEX_SHADER));
-	glShaderSource(vertexShader, 1, vertexShaderSource, NULL);
-	glCompileShader(vertexShader);
-
-	//Compile fragment shader
-	GLuint fragmentShader(glCreateShader(GL_FRAGMENT_SHADER));
-	glShaderSource(fragmentShader, 1, fragmentShaderSource, NULL);
-	glCompileShader(vertexShader);
+	GLuint vertexShader = CompileShader(vertexShaderSource, GL_VERTEX_SHADER);
+	GLuint fragmentShader = CompileShader(fragmentShaderSource, GL_FRAGMENT_SHADER);
 
 	//Link vertex and fragment shader together
 	GLuint program(glCreateProgram());
@@ -170,6 +200,10 @@ void Init(void)
 	//Create and bind the shader program
 	gProgram = CompileShaders(gVertexShaderSource, gFragmentShaderSource);
 	glUseProgram(gProgram);
+
+	glGenVertexArrays(1, &gDefaultVao);
+	glBindVertexArray(gDefaultVao);
+
 	glEnableVertexAttribArray(0);
 
 	//Create a vertex buffer object
@@ -204,6 +238,7 @@ void Quit()
 	glDeleteProgram(gProgram);
 	glUnmapBuffer(GL_ARRAY_BUFFER);
 	glDeleteBuffers(1, &gVertexBuffer);
+	glDeleteVertexArrays(1, &gDefaultVao);
 
 	double perFrame = 1000.0/((double)gFrameCount / 5.0);
 
@@ -345,9 +380,9 @@ int main(int argc, char** argv)
 			std::cout << "Quit after:   " << gParamMaxAllowedTime / 1000 << " sec" << std::endl;
 	}
 
-	//glutInitContextVersion(4, 2);
-	glutInitContextFlags(GLUT_FORWARD_COMPATIBLE | GLUT_DEBUG);
-	//glutInitContextProfile(GLUT_CORE_PROFILE);
+	glutInitContextVersion(4, 2);
+	glutInitContextFlags(GLUT_FORWARD_COMPATIBLE | (gParamDebugMode ? GLUT_DEBUG : 0));
+	glutInitContextProfile(GLUT_CORE_PROFILE);
 
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize(500, 500);
