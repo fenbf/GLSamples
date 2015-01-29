@@ -1,0 +1,170 @@
+
+GLSamples\project>call persistent_run_test.bat 10 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=10 resonly=true 
+Wait counter: 1766635 Frame counter: 14684 Per frame: 0.340507 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=10 resonly=true 
+Wait counter: 0 Frame counter: 15499 Per frame: 0.322601 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=10 resonly=true 
+Wait counter: 34754 Frame counter: 13686 Per frame: 0.365337 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=10 resonly=true 
+Wait counter: 0 Frame counter: 15540 Per frame: 0.32175 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=10 resonly=true 
+Wait counter: 0 Frame counter: 13652 Per frame: 0.366247 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=10 resonly=true 
+Wait counter: 0 Frame counter: 15535 Per frame: 0.321854 milisec 
+
+GLSamples\project>call standard_run_test.bat 10 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=10 resonly=true 
+Frame counter: 15473 Per frame: 0.323144 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=10 resonly=true 
+Frame counter: 10477 Per frame: 0.477236 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=10 resonly=true 
+Frame counter: 15388 Per frame: 0.324929 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=10 resonly=true 
+Frame counter: 15391 Per frame: 0.324865 milisec 
+
+GLSamples\project>call persistent_run_test.bat 100 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=100 resonly=true 
+Wait counter: 1594647 Frame counter: 15009 Per frame: 0.333133 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=100 resonly=true 
+Wait counter: 0 Frame counter: 15441 Per frame: 0.323813 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=100 resonly=true 
+Wait counter: 35670 Frame counter: 13801 Per frame: 0.362293 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=100 resonly=true 
+Wait counter: 0 Frame counter: 15483 Per frame: 0.322935 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=100 resonly=true 
+Wait counter: 0 Frame counter: 13844 Per frame: 0.361167 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=100 resonly=true 
+Wait counter: 0 Frame counter: 15463 Per frame: 0.323353 milisec 
+
+GLSamples\project>call standard_run_test.bat 100 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=100 resonly=true 
+Frame counter: 15409 Per frame: 0.324486 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=100 resonly=true 
+Frame counter: 10136 Per frame: 0.493291 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=100 resonly=true 
+Frame counter: 15312 Per frame: 0.326541 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=100 resonly=true 
+Frame counter: 15311 Per frame: 0.326563 milisec 
+
+GLSamples\project>call persistent_run_test.bat 1000 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=1000 resonly=true 
+Wait counter: 47331 Frame counter: 13297 Per frame: 0.376025 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=1000 resonly=true 
+Wait counter: 0 Frame counter: 13800 Per frame: 0.362319 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=1000 resonly=true 
+Wait counter: 567 Frame counter: 13471 Per frame: 0.371168 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=1000 resonly=true 
+Wait counter: 0 Frame counter: 14298 Per frame: 0.349699 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=1000 resonly=true 
+Wait counter: 0 Frame counter: 12978 Per frame: 0.385267 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=1000 resonly=true 
+Wait counter: 0 Frame counter: 14005 Per frame: 0.357015 milisec 
+
+GLSamples\project>call standard_run_test.bat 1000 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=1000 resonly=true 
+Frame counter: 13685 Per frame: 0.365364 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=1000 resonly=true 
+Frame counter: 7729 Per frame: 0.646914 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=1000 resonly=true 
+Frame counter: 13647 Per frame: 0.366381 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=1000 resonly=true 
+Frame counter: 14122 Per frame: 0.354057 milisec 
+
+GLSamples\project>call persistent_run_test.bat 2000 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=2000 resonly=true 
+Wait counter: 79462 Frame counter: 7991 Per frame: 0.625704 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=2000 resonly=true 
+Wait counter: 0 Frame counter: 8505 Per frame: 0.587889 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=2000 resonly=true 
+Wait counter: 0 Frame counter: 8146 Per frame: 0.613798 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=2000 resonly=true 
+Wait counter: 0 Frame counter: 8471 Per frame: 0.590249 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=2000 resonly=true 
+Wait counter: 0 Frame counter: 8136 Per frame: 0.614553 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=2000 resonly=true 
+Wait counter: 0 Frame counter: 8830 Per frame: 0.566251 milisec 
+
+GLSamples\project>call standard_run_test.bat 2000 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=2000 resonly=true 
+Frame counter: 8259 Per frame: 0.6054 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=2000 resonly=true 
+Frame counter: 5787 Per frame: 0.864006 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=2000 resonly=true 
+Frame counter: 8434 Per frame: 0.592839 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=2000 resonly=true 
+Frame counter: 8415 Per frame: 0.594177 milisec 
+
+GLSamples\project>call persistent_run_test.bat 5000 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=5000 resonly=true 
+Wait counter: 274659 Frame counter: 3480 Per frame: 1.43678 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=5000 resonly=true 
+Wait counter: 0 Frame counter: 4061 Per frame: 1.23122 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=5000 resonly=true 
+Wait counter: 0 Frame counter: 3824 Per frame: 1.30753 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=5000 resonly=true 
+Wait counter: 0 Frame counter: 4053 Per frame: 1.23365 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=5000 resonly=true 
+Wait counter: 0 Frame counter: 3971 Per frame: 1.25913 milisec 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=5000 resonly=true 
+Wait counter: 0 Frame counter: 4039 Per frame: 1.23793 milisec 
+
+GLSamples\project>call standard_run_test.bat 5000 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=5000 resonly=true 
+Frame counter: 3887 Per frame: 1.28634 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=5000 resonly=true 
+Frame counter: 3063 Per frame: 1.63239 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=5000 resonly=true 
+Frame counter: 3896 Per frame: 1.28337 milisec 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=5000 resonly=true 
+Frame counter: 3850 Per frame: 1.2987 milisec 

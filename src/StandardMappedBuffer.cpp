@@ -164,6 +164,12 @@ void Init(void)
 	//Init glew
 	glewInit();
 
+	if (!gParamShowOnlyResults)
+	{
+		printf("OpenGL via: %s\n", glGetString(GL_VENDOR));
+		printf("OpenGL ver: %s\n", glGetString(GL_VERSION));
+	}
+
 #ifdef WIN32	// make sure vsync is turned off
 	if (WGLEW_EXT_swap_control)
 		wglSwapIntervalEXT(0);
@@ -174,7 +180,7 @@ void Init(void)
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, 0, GL_TRUE);
 		glDebugMessageCallback((GLDEBUGPROCARB)DebugFunc, nullptr);
-		printf("Debug Message Callback turned on!");
+		printf("Debug Message Callback turned on!\n");
 	}
 
 	//Set clear color
@@ -323,9 +329,9 @@ int main(int argc, char** argv)
 			std::cout << "Quit after:   " << gParamMaxAllowedTime / 1000 << " sec" << std::endl;
 	}
 
-	glutInitContextVersion(4, 2);
-	glutInitContextFlags(GLUT_FORWARD_COMPATIBLE | (gParamDebugMode ? GLUT_DEBUG : 0));
-	//glutInitContextProfile(GLUT_CORE_PROFILE);
+	if (gParamDebugMode)
+		glutInitContextFlags(GLUT_DEBUG);
+	glutInitContextProfile(GLUT_CORE_PROFILE);
 
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize(500, 500);

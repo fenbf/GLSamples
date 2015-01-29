@@ -1,0 +1,420 @@
+
+GLSamples\project>call persistent_run_test.bat 10 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 72336. Frame counter: 32400
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 39773
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 87248. Frame counter: 35514
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 39117
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 35292
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 39613
+
+GLSamples\project>call standard_run_test.bat 10 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=10 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    10
+Quit after:   5 sec
+Frame counter: 34814
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=10 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    10
+Quit after:   5 sec
+Frame counter: 34865
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=10 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    10
+Quit after:   5 sec
+Frame counter: 38455
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=10 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    10
+Quit after:   5 sec
+Frame counter: 38746
+
+GLSamples\project>call persistent_run_test.bat 100 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 37887. Frame counter: 29118
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 37925
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 79658. Frame counter: 34713
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 38120
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 34646
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 37693
+
+GLSamples\project>call standard_run_test.bat 100 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=100 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    100
+Quit after:   5 sec
+Frame counter: 30212
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=100 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    100
+Quit after:   5 sec
+Frame counter: 30057
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=100 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    100
+Quit after:   5 sec
+Frame counter: 36175
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=100 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    100
+Quit after:   5 sec
+Frame counter: 37705
+
+GLSamples\project>call persistent_run_test.bat 1000 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 7549. Frame counter: 13895
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 21915
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 2036. Frame counter: 21401
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 21835
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 21572
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 21964
+
+GLSamples\project>call standard_run_test.bat 1000 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=1000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    1000
+Quit after:   5 sec
+Frame counter: 14438
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=1000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    1000
+Quit after:   5 sec
+Frame counter: 14580
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=1000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    1000
+Quit after:   5 sec
+Frame counter: 22036
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=1000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    1000
+Quit after:   5 sec
+Frame counter: 21645
+
+GLSamples\project>call persistent_run_test.bat 2000 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 2411. Frame counter: 9028
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 11596
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 4. Frame counter: 11504
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 11660
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 11497
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 11685
+
+GLSamples\project>call standard_run_test.bat 2000 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=2000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    2000
+Quit after:   5 sec
+Frame counter: 8856
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=2000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    2000
+Quit after:   5 sec
+Frame counter: 9059
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=2000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    2000
+Quit after:   5 sec
+Frame counter: 11593
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=2000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    2000
+Quit after:   5 sec
+Frame counter: 11608
+
+GLSamples\project>call persistent_run_test.bat 5000 
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 1895. Frame counter: 4022
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 4730
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 4736
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 4750
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 4731
+
+GLSamples\project>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0. Frame counter: 4764
+
+GLSamples\project>call standard_run_test.bat 5000 
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=5000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    5000
+Quit after:   5 sec
+Frame counter: 4075
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=5000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    5000
+Quit after:   5 sec
+Frame counter: 4064
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=5000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    5000
+Quit after:   5 sec
+Frame counter: 4745
+
+GLSamples\project>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=5000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    5000
+Quit after:   5 sec
+Frame counter: 4734

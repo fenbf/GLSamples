@@ -1,0 +1,520 @@
+
+call persistent_run_test.bat 10 
+
+Release\PersistentMappedBuffer.exe sync=true single time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 730562 Frame counter: 22494 Per frame: 0.222281 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false single time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 26684 Per frame: 0.187378 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true double time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 2449 Frame counter: 22826 Per frame: 0.219048 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false double time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 27066 Per frame: 0.184734 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 23913 Per frame: 0.209091 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 26939 Per frame: 0.185605 milisec 
+
+call standard_run_test.bat 10 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=10 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    10
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 26676 Per frame: 0.187434 milisec 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=10 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    10
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 26344 Per frame: 0.189797 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=10 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    10
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 26762 Per frame: 0.186832 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=10 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    10
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 26492 Per frame: 0.188736 milisec 
+
+call persistent_run_test.bat 100 
+
+Release\PersistentMappedBuffer.exe sync=true single time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 94023 Frame counter: 20895 Per frame: 0.239292 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false single time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 23648 Per frame: 0.211434 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true double time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 145 Frame counter: 20846 Per frame: 0.239854 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false double time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 25563 Per frame: 0.195595 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 20398 Per frame: 0.245122 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 23902 Per frame: 0.209188 milisec 
+
+call standard_run_test.bat 100 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=100 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    100
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 19992 Per frame: 0.2501 milisec 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=100 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    100
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 22405 Per frame: 0.223164 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=100 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    100
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 21425 Per frame: 0.233372 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=100 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    100
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 21963 Per frame: 0.227656 milisec 
+
+call persistent_run_test.bat 1000 
+
+Release\PersistentMappedBuffer.exe sync=true single time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 125779 Frame counter: 7859 Per frame: 0.636213 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false single time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 8821 Per frame: 0.566829 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true double time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 8116 Per frame: 0.616067 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false double time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 8878 Per frame: 0.56319 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 8122 Per frame: 0.615612 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 8801 Per frame: 0.568117 milisec 
+
+call standard_run_test.bat 1000 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=1000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    1000
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 8147 Per frame: 0.613723 milisec 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=1000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    1000
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 7730 Per frame: 0.646831 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=1000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    1000
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 8539 Per frame: 0.585549 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=1000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    1000
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 9084 Per frame: 0.550418 milisec 
+
+call persistent_run_test.bat 2000 
+
+Release\PersistentMappedBuffer.exe sync=true single time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 58376 Frame counter: 4845 Per frame: 1.03199 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false single time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 5091 Per frame: 0.982125 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true double time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 22 Frame counter: 4875 Per frame: 1.02564 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false double time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 5080 Per frame: 0.984252 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 4866 Per frame: 1.02754 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 5661 Per frame: 0.883236 milisec 
+
+call standard_run_test.bat 2000 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=2000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    2000
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 5414 Per frame: 0.923532 milisec 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=2000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    2000
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 5280 Per frame: 0.94697 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=2000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    2000
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 4999 Per frame: 1.0002 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=2000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    2000
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 4906 Per frame: 1.01916 milisec 
+
+call persistent_run_test.bat 5000 
+
+Release\PersistentMappedBuffer.exe sync=true single time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 300390 Frame counter: 2663 Per frame: 1.87758 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false single time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 2946 Per frame: 1.69722 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true double time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 2859 Per frame: 1.74886 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false double time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 2957 Per frame: 1.6909 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 2863 Per frame: 1.74642 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Wait counter: 0 Frame counter: 3031 Per frame: 1.64962 milisec 
+
+call standard_run_test.bat 5000 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=5000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    5000
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 2937 Per frame: 1.70242 milisec 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=5000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    5000
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 2609 Per frame: 1.91644 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=5000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    5000
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 2967 Per frame: 1.6852 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=5000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    5000
+Quit after:   5 sec
+OpenGL via: Intel
+OpenGL ver: 4.3.0 - Build 10.18.14.4080
+Frame counter: 2874 Per frame: 1.73974 milisec 

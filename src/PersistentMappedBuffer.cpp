@@ -174,6 +174,12 @@ void Init(void)
 	//Init glew
 	glewInit();
 
+	if (!gParamShowOnlyResults)
+	{
+		printf("OpenGL via: %s\n", glGetString(GL_VENDOR));
+		printf("OpenGL ver: %s\n", glGetString(GL_VERSION));
+	}
+
 	if (!glewIsSupported("GL_ARB_buffer_storage"))
 	{
 		std::cerr << "ERROR: \"ARB_buffer_storage\" is missing..." << std::endl;
@@ -190,7 +196,7 @@ void Init(void)
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, 0, GL_TRUE);
 		glDebugMessageCallback((GLDEBUGPROCARB)DebugFunc, nullptr);
-		printf("Debug Message Callback turned on!");
+		printf("Debug Message Callback turned on!\n");
 	}
 
 	//Set clear color
@@ -276,7 +282,6 @@ void Display()
 	glClear(GL_COLOR_BUFFER_BIT);
 	gAngle += 0.001f;
 
-	//Wait until the gpu is no longer using the buffer
 	if (gParamSyncBuffers)
 	{
 		if (gParamBufferCount > 1)
@@ -284,8 +289,6 @@ void Display()
 		else
 			WaitBuffer(gSyncObject);
 	}
-
-	//Modify vertex buffer data using the persistent mapped address
 
 	size_t startID = 0;
 
@@ -305,13 +308,10 @@ void Display()
 			gVertexBufferData[i + startID].y = (gReferenceTrianglePosition[i].x - tx) * sinf(an) + (gReferenceTrianglePosition[i].y - ty) * cosf(an) + ty;
 		}
 	}
-	//glMemoryBarrier(GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT);
 
-	//Draw using the vertex buffer
 	for (int iter = 0; iter < MAX_ITERS; ++iter)
 		glDrawArrays(GL_TRIANGLES, startID, gParamTriangleCount * 3);
 
-	//Place a fence which will be removed when the draw command has finished
 	if (gParamSyncBuffers)
 	{
 		if (gParamBufferCount > 1)
@@ -380,11 +380,11 @@ int main(int argc, char** argv)
 			std::cout << "Quit after:   " << gParamMaxAllowedTime / 1000 << " sec" << std::endl;
 	}
 
-	glutInitContextVersion(4, 2);
-	glutInitContextFlags(GLUT_FORWARD_COMPATIBLE | (gParamDebugMode ? GLUT_DEBUG : 0));
+	if (gParamDebugMode)
+		glutInitContextFlags(GLUT_DEBUG);
 	glutInitContextProfile(GLUT_CORE_PROFILE);
 
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowSize(500, 500);
 	glutCreateWindow("Persistent-mapped buffers example");
 	glutIdleFunc(Display);

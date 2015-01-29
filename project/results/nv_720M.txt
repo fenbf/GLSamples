@@ -1,0 +1,560 @@
+
+call persistent_run_test.bat 10 
+
+Release\PersistentMappedBuffer.exe sync=true single time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 3876 Per frame: 1.28999 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false single time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4332 Per frame: 1.1542 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true double time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4381 Per frame: 1.14129 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false double time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4334 Per frame: 1.15367 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4347 Per frame: 1.15022 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4418 Per frame: 1.13173 milisec 
+
+call standard_run_test.bat 10 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=10 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    10
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4371 Per frame: 1.1439 milisec 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=10 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    10
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4365 Per frame: 1.14548 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=10 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    10
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4389 Per frame: 1.13921 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=10 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    10
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4368 Per frame: 1.14469 milisec 
+
+call persistent_run_test.bat 100 
+
+Release\PersistentMappedBuffer.exe sync=true single time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4322 Per frame: 1.15687 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false single time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4361 Per frame: 1.14653 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true double time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4405 Per frame: 1.13507 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false double time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4361 Per frame: 1.14653 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4409 Per frame: 1.13404 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4410 Per frame: 1.13379 milisec 
+
+call standard_run_test.bat 100 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=100 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    100
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4346 Per frame: 1.15048 milisec 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=100 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    100
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4380 Per frame: 1.14155 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=100 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    100
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4400 Per frame: 1.13636 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=100 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    100
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4368 Per frame: 1.14469 milisec 
+
+call persistent_run_test.bat 1000 
+
+Release\PersistentMappedBuffer.exe sync=true single time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 6 Frame counter: 4525 Per frame: 1.10497 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false single time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4217 Per frame: 1.18568 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true double time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4521 Per frame: 1.10595 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false double time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4251 Per frame: 1.17619 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4513 Per frame: 1.10791 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4334 Per frame: 1.15367 milisec 
+
+call standard_run_test.bat 1000 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=1000 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    1000
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4456 Per frame: 1.12208 milisec 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=1000 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    1000
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4477 Per frame: 1.11682 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=1000 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    1000
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4186 Per frame: 1.19446 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=1000 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    1000
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4211 Per frame: 1.18737 milisec 
+
+call persistent_run_test.bat 2000 
+
+Release\PersistentMappedBuffer.exe sync=true single time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 22 Frame counter: 3962 Per frame: 1.26199 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false single time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4052 Per frame: 1.23396 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true double time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 3912 Per frame: 1.27812 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false double time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4044 Per frame: 1.2364 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 3909 Per frame: 1.2791 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 4157 Per frame: 1.20279 milisec 
+
+call standard_run_test.bat 2000 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=2000 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    2000
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4034 Per frame: 1.23946 milisec 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=2000 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    2000
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4034 Per frame: 1.23946 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=2000 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    2000
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4030 Per frame: 1.24069 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=2000 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    2000
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 4091 Per frame: 1.2222 milisec 
+
+call persistent_run_test.bat 5000 
+
+Release\PersistentMappedBuffer.exe sync=true single time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 3386 Frame counter: 2533 Per frame: 1.97394 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false single time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 3077 Per frame: 1.62496 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true double time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 2523 Per frame: 1.98177 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false double time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 3215 Per frame: 1.55521 milisec 
+
+Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 2563 Per frame: 1.95084 milisec 
+
+Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Wait counter: 0 Frame counter: 3063 Per frame: 1.63239 milisec 
+
+call standard_run_test.bat 5000 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=5000 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    5000
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 2596 Per frame: 1.92604 milisec 
+
+Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=5000 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    5000
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 2586 Per frame: 1.93349 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=5000 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    5000
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 3201 Per frame: 1.56201 milisec 
+
+Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=5000 
+OpenGL via: (null)
+OpenGL ver: (null)
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    5000
+Quit after:   5 sec
+OpenGL via: NVIDIA Corporation
+OpenGL ver: 4.4.0
+Frame counter: 3060 Per frame: 1.63399 milisec 

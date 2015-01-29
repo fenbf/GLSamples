@@ -1,0 +1,588 @@
+
+benchmark_pack>call persistent_run_test.bat 10 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 10223 Frame counter: 48614 Per frame: 0.102851 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 57558 Per frame: 0.0868689 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 27594 Frame counter: 50660 Per frame: 0.0986972 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 58079 Per frame: 0.0860896 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 51410 Per frame: 0.0972573 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=10 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 58547 Per frame: 0.0854015 milisec 
+
+benchmark_pack>call standard_run_test.bat 10 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=10 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    10
+Quit after:   5 sec
+Frame counter: 51946 Per frame: 0.0962538 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=10 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    10
+Quit after:   5 sec
+Frame counter: 51837 Per frame: 0.0964562 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=10 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    10
+Quit after:   5 sec
+Frame counter: 55184 Per frame: 0.090606 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=10 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    10
+Quit after:   5 sec
+Frame counter: 55584 Per frame: 0.0899539 milisec 
+
+benchmark_pack>call persistent_run_test.bat 100 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 21863 Frame counter: 41012 Per frame: 0.121916 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 56646 Per frame: 0.0882675 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 28241 Frame counter: 46053 Per frame: 0.108571 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 56341 Per frame: 0.0887453 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 45343 Per frame: 0.110271 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=100 
+GLSamples: Persistent Mapped Buffers
+Triangles:    100
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 56593 Per frame: 0.0883501 milisec 
+
+benchmark_pack>call standard_run_test.bat 100 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=100 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    100
+Quit after:   5 sec
+Frame counter: 45396 Per frame: 0.110142 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=100 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    100
+Quit after:   5 sec
+Frame counter: 44125 Per frame: 0.113314 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=100 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    100
+Quit after:   5 sec
+Frame counter: 44963 Per frame: 0.111203 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=100 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    100
+Quit after:   5 sec
+Frame counter: 44749 Per frame: 0.111734 milisec 
+
+benchmark_pack>call persistent_run_test.bat 1000 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 7495 Frame counter: 18739 Per frame: 0.266823 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 24974 Per frame: 0.200208 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 3351 Frame counter: 25087 Per frame: 0.199306 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 25222 Per frame: 0.19824 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 25041 Per frame: 0.199673 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=1000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    1000
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 25391 Per frame: 0.19692 milisec 
+
+benchmark_pack>call standard_run_test.bat 1000 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=1000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    1000
+Quit after:   5 sec
+Frame counter: 19068 Per frame: 0.262219 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=1000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    1000
+Quit after:   5 sec
+Frame counter: 18972 Per frame: 0.263546 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=1000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    1000
+Quit after:   5 sec
+Frame counter: 25087 Per frame: 0.199306 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=1000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    1000
+Quit after:   5 sec
+Frame counter: 24816 Per frame: 0.201483 milisec 
+
+benchmark_pack>call persistent_run_test.bat 2000 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 10405 Frame counter: 11151 Per frame: 0.44839 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 13530 Per frame: 0.369549 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 404 Frame counter: 13471 Per frame: 0.371168 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 13648 Per frame: 0.366354 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 13464 Per frame: 0.371361 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=2000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    2000
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 13528 Per frame: 0.369604 milisec 
+
+benchmark_pack>call standard_run_test.bat 2000 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=2000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    2000
+Quit after:   5 sec
+Frame counter: 11149 Per frame: 0.448471 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=2000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    2000
+Quit after:   5 sec
+Frame counter: 11225 Per frame: 0.445434 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=2000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    2000
+Quit after:   5 sec
+Frame counter: 13589 Per frame: 0.367945 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=2000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    2000
+Quit after:   5 sec
+Frame counter: 13572 Per frame: 0.368406 milisec 
+
+benchmark_pack>call persistent_run_test.bat 5000 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 5905 Frame counter: 5044 Per frame: 0.991277 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 5718 Per frame: 0.874432 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 5707 Per frame: 0.876117 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 5723 Per frame: 0.873668 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 5708 Per frame: 0.875964 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=5000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    5000
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 5731 Per frame: 0.872448 milisec 
+
+benchmark_pack>call standard_run_test.bat 5000 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=5000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    5000
+Quit after:   5 sec
+Frame counter: 5117 Per frame: 0.977135 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=5000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    5000
+Quit after:   5 sec
+Frame counter: 5136 Per frame: 0.97352 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=5000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    5000
+Quit after:   5 sec
+Frame counter: 5683 Per frame: 0.879817 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=5000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    5000
+Quit after:   5 sec
+Frame counter: 5655 Per frame: 0.884173 milisec 
+
+benchmark_pack>call persistent_run_test.bat 10000 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=10000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10000
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 18620 Frame counter: 2700 Per frame: 1.85185 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=10000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10000
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 2912 Per frame: 1.71703 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=10000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10000
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 2901 Per frame: 1.72354 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=10000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10000
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 2920 Per frame: 1.71233 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=10000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10000
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 2906 Per frame: 1.72058 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=10000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    10000
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 2917 Per frame: 1.71409 milisec 
+
+benchmark_pack>call standard_run_test.bat 10000 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=10000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    10000
+Quit after:   5 sec
+Frame counter: 2738 Per frame: 1.82615 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=10000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    10000
+Quit after:   5 sec
+Frame counter: 2719 Per frame: 1.83891 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=10000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    10000
+Quit after:   5 sec
+Frame counter: 2886 Per frame: 1.7325 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=10000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    10000
+Quit after:   5 sec
+Frame counter: 2755 Per frame: 1.81488 milisec 
+
+benchmark_pack>call persistent_run_test.bat 15000 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true single time=5 tris=15000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    15000
+Sync:         on
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 37624 Frame counter: 1844 Per frame: 2.7115 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false single time=5 tris=15000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    15000
+Sync:         off
+Buffer count: single
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 1944 Per frame: 2.57202 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true double time=5 tris=15000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    15000
+Sync:         on
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 1953 Per frame: 2.56016 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false double time=5 tris=15000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    15000
+Sync:         off
+Buffer count: double
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 1951 Per frame: 2.56279 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=true triple time=5 tris=15000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    15000
+Sync:         on
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 1945 Per frame: 2.57069 milisec 
+
+benchmark_pack>Release\PersistentMappedBuffer.exe sync=false triple time=5 tris=15000 
+GLSamples: Persistent Mapped Buffers
+Triangles:    15000
+Sync:         off
+Buffer count: triple
+Quit after:   5 sec
+Wait counter: 0 Frame counter: 1957 Per frame: 2.55493 milisec 
+
+benchmark_pack>call standard_run_test.bat 15000 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=true orphan=true time=5 tris=15000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+Orphaning
+Triangles:    15000
+Quit after:   5 sec
+Frame counter: 1858 Per frame: 2.69107 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=true orphan=false time=5 tris=15000 
+GLSamples: Standard Mapped Buffers
+Using glMap*
+No orphaning
+Triangles:    15000
+Quit after:   5 sec
+Frame counter: 1858 Per frame: 2.69107 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=false orphan=true time=5 tris=15000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+Orphaning
+Triangles:    15000
+Quit after:   5 sec
+Frame counter: 1925 Per frame: 2.5974 milisec 
+
+benchmark_pack>Release\StandardMappedBuffer.exe usemap=false orphan=false time=5 tris=15000 
+GLSamples: Standard Mapped Buffers
+Using glBuffer*Data
+No orphaning
+Triangles:    15000
+Quit after:   5 sec
+Frame counter: 1927 Per frame: 2.59471 milisec 
