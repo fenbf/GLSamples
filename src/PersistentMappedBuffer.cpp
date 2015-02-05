@@ -27,8 +27,11 @@ namespace
 
 	struct Range
 	{
-		size_t begin = 0;
-		GLsync sync = 0;
+		size_t begin;
+		GLsync sync;
+		Range()
+			: begin(0), sync(0)
+		{ ; }
 	};
 
 	const GLchar* gVertexShaderSource[] = {
@@ -128,9 +131,16 @@ void PrepareReferenceTriangles(SVertex2D *trianglePos, size_t triangleCount)
 		float py = ((float)rand() / (float)RAND_MAX)*1.9f - 0.95f;
 		float pd = 0.02f;// ((float)rand() / (float)RAND_MAX)*0.02f + 0.01f;
 
-		trianglePos[i * 3 + 0] = { px, py + pd };
-		trianglePos[i * 3 + 1] = { px - pd, py - pd };
-		trianglePos[i * 3 + 2] = { px + pd, py - pd };
+		trianglePos[i * 3 + 0].x = px;
+		trianglePos[i * 3 + 0].y = py + pd;
+		trianglePos[i * 3 + 1].x = px - pd;
+		trianglePos[i * 3 + 1].y = py - pd;
+		trianglePos[i * 3 + 2].x = px + pd;
+		trianglePos[i * 3 + 2].y = py - pd;
+
+		//trianglePos[i * 3 + 0] = { px, py + pd };
+		//trianglePos[i * 3 + 1] = { px - pd, py - pd };
+		//trianglePos[i * 3 + 2] = { px + pd, py - pd };
 	}
 }
 
@@ -221,7 +231,7 @@ void Init(void)
 	PrepareReferenceTriangles(gReferenceTrianglePosition.get(), gParamTriangleCount);
 
 	//Create an immutable data store for the buffer
-	size_t bufferSize{ gParamTriangleCount * 3 * sizeof(SVertex2D)};
+	size_t bufferSize( gParamTriangleCount * 3 * sizeof(SVertex2D));
 	if (gParamBufferCount > 1)
 	{
 		bufferSize *= gParamBufferCount;
