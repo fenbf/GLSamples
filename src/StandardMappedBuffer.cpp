@@ -118,9 +118,12 @@ void PrepareReferenceTriangles(SVertex2D *trianglePos, size_t triangleCount)
 		float py = ((float)rand() / (float)RAND_MAX)*1.9f - 0.95f;
 		float pd = 0.02f;// ((float)rand() / (float)RAND_MAX)*0.02f + 0.01f;
 
-		trianglePos[i * 3 + 0] = { px, py + pd };
-		trianglePos[i * 3 + 1] = { px - pd, py - pd };
-		trianglePos[i * 3 + 2] = { px + pd, py - pd };
+		trianglePos[i * 3 + 0].x = px;
+		trianglePos[i * 3 + 0].y = py + pd;
+		trianglePos[i * 3 + 1].x = px - pd;
+		trianglePos[i * 3 + 1].y = py - pd;
+		trianglePos[i * 3 + 2].x = px + pd;
+		trianglePos[i * 3 + 2].y = py - pd;
 	}
 }
 
@@ -204,7 +207,7 @@ void Init(void)
 	PrepareReferenceTriangles(gReferenceTrianglePosition.get(), gParamTriangleCount);
 
 	//Create an immutable data store for the buffer
-	const size_t bufferSize{ gParamTriangleCount * 3 * sizeof(SVertex2D)};
+	const size_t bufferSize( gParamTriangleCount * 3 * sizeof(SVertex2D));
 
 	glBufferData(GL_ARRAY_BUFFER, bufferSize, nullptr, GL_STREAM_DRAW);
 
@@ -233,7 +236,7 @@ void Display()
 	glClear(GL_COLOR_BUFFER_BIT);
 	gAngle += 0.001f;
 
-	const size_t bufferSize{ gParamTriangleCount * 3 * sizeof(SVertex2D) };
+	const size_t bufferSize( gParamTriangleCount * 3 * sizeof(SVertex2D) );
 
 	if (gParamUseMapBuffer)
 	{
